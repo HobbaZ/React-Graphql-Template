@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap');
+
+body,html, nav, footer {
+    color: black;
+}
+
+html {
+    min-height: fit-content;
+    margin-bottom: 50px;
+}
+
+#genImage {
+    background-color: black;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+#imageContainer {
+    width:50%;
+    background-color: blue;
+    display: inline-block;
+    text-align: center;
+}
+
+#svgContainer {
+    max-width: 600px;
+    display: flex;
+    max-height: 600px;
+    margin: auto;
+    justify-content: center;
+    padding: 10px;
+}
+
+#svgContainer > svg {
+    display: block;
+    text-align: center;
+    height: 300px;
+    width: 300px;
+    margin:0 auto;
+}
