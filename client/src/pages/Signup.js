@@ -61,7 +61,28 @@ const SignupForm = () => {
               </p>
             ) : (
       <Form validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
+
+        <FormGroup>
+            <Label>First Name</Label>
+            <FormField
+            placeholder="Your first name"
+            name="firstname"
+            type="text"
+            value={userFormData.firstname}
+            onChange={handleInputChange}>
+            </FormField>
+        </FormGroup>
+
+        <FormGroup>
+            <Label>Last Name</Label>
+            <FormField
+            placeholder="Your last name"
+            name="lastname"
+            type="text"
+            value={userFormData.lastname}
+            onChange={handleInputChange}>
+            </FormField>
+        </FormGroup>
 
         <FormGroup>
             <Label>Username</Label>

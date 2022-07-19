@@ -38,7 +38,7 @@ function Greeting(props) {
   )
 }
 
-const Profile = () => {
+const Profile = (props) => {
   const { loading, data } = useQuery(QUERY_ME);
 
   const [ updateUser ] = useMutation(UPDATE_ME);
