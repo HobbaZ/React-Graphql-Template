@@ -2,31 +2,41 @@ import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 
-import { ADD_USER } from '../utils/mutations'
+import { ADD_USER } from '../utils/mutations';
+
+import { Container, Button, Form} from 'react-bootstrap';
 
 import Auth from '../utils/auth';
 
-import { Form, FormField, Label, FormGroup, FormButton } from '../styles/FormStyle';
+let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-import { Container } from '../styles/GenericStyles';
+const login = () => {
+  window.location.replace("/login");
+};
+
 
 const SignupForm = () => {
 
   // set initial form state
-  const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '', firstname: '', llastname: '' });
+  const [formInput, setFormInput] = useState({ username: '', email: '', password: '', firstname: '', lastname: '' });
   // set state for form validation
   const [validated] = useState(false);
+  const [submittingForm, setSubmittingForm] = useState(false);
 
-  const [addUser, { error, data } ] = useMutation(ADD_USER);
+  const [addUser, { data } ] = useMutation(ADD_USER);
 
-  const handleInputChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setUserFormData({ ...userFormData, [name]: value });
+    setFormInput({ ...formInput, [name]: value });
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(userFormData);
+    setSubmittingForm(true);
+
+    if (!formInput) {
+      return false;
+    }
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -34,16 +44,19 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    //Send data to login endpoint
     try {
       const { data } = await addUser({
-        variables: { ...userFormData },
+        variables: { ...formInput },
       });
 
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
-    setUserFormData({
+    setFormInput({
+      firstname: '',
+      lastname: '',
       username: '',
       email: '',
       password: '',
@@ -54,85 +67,76 @@ const SignupForm = () => {
   return (
     <>
     <Container>
-    <h4>Sign Up</h4>
+      <div>
+      <h1 className='text-center'>Sign Up</h1>
       {data ? (
               <p>
                 Success! Creating your account...
               </p>
             ) : (
-      <Form validated={validated} onSubmit={handleFormSubmit}>
+      <Form validated={validated} onSubmit={handleSubmit} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
-        <FormGroup>
-            <Label>First Name</Label>
-            <FormField
-            placeholder="Your first name"
-            name="firstname"
-            type="text"
-            value={userFormData.firstname}
-            onChange={handleInputChange}>
-            </FormField>
-        </FormGroup>
+    <Form.Group disabled={submittingForm}>
+        <Form.Label>First Name</Form.Label>
+        <Form.Control type="text" name ="firstname" value={formInput.firstname.trim() || ''} placeholder="First Name" onChange={handleChange} required minLength={2}/>
+    </Form.Group>
 
-        <FormGroup>
-            <Label>Last Name</Label>
-            <FormField
-            placeholder="Your last name"
-            name="lastname"
-            type="text"
-            value={userFormData.lastname}
-            onChange={handleInputChange}>
-            </FormField>
-        </FormGroup>
+    {formInput.firstname.length < 2 ? 
+        <div className="text-center text-danger">{"First name must be at least 2 characters"}</div> : ''};
 
-        <FormGroup>
-            <Label>Username</Label>
-            <FormField
-            placeholder="Your username"
-            name="username"
-            type="text"
-            value={userFormData.username}
-            onChange={handleInputChange}>
-            </FormField>
-        </FormGroup>
+    <Form.Group disabled={submittingForm}>
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control type="text"name ="lastname" value={formInput.lastname.trim() || ''} placeholder="Last Name" onChange={handleChange} required minLength={2}/>
+    </Form.Group>
 
-        <FormGroup>
-            <Label>Email</Label>
-            <FormField
-            placeholder="Your email"
-            name="email"
-            type="email"
-            value={userFormData.email}
-            onChange={handleInputChange}>
-            </FormField>
-        </FormGroup>
+    {formInput.lastname.length < 2 ? 
+        <div className="text-center text-danger">{"Last name must be at least 2 characters"}</div> : ''};
+    
+    <Form.Group disabled={submittingForm}>
+        <Form.Label>Create a username</Form.Label>
+        <Form.Control type="text" name ="username" value={formInput.username.trim() || ''} placeholder="username" onChange={handleChange} required minLength={2} formNoValidate={true}/>
+    </Form.Group>
+    
+    {formInput.username.length < 2 ? 
+        <div className="text-center text-danger">{"Username must be at least 2 characters"}</div> : ''};
 
-        <FormGroup>
-            <Label>Password</Label>
-            <FormField
-            placeholder="Create a password"
-            name="password"
-            type="password"
-            value={userFormData.password}
-            onChange={handleInputChange}>
-            </FormField>
-        </FormGroup>
+    <Form.Group disabled={submittingForm}>
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" name ="email" value={formInput.email.trim() || ''} placeholder="Enter email" onChange={handleChange} required minLength={2}/>
+    </Form.Group>
 
-        <div style={{"textAlign": "center"}}>
-        <FormButton
-          disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-          type='submit'>
-          Sign Up
-        </FormButton>
+    {!emailRegex.test(formInput.email) ? 
+        <div className="text-center text-danger">{"Invalid email entered"}</div> : ''};
+
+    <Form.Group disabled={submittingForm}>
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={handleChange} required minLength={8}/>
+    </Form.Group>
+
+    {formInput.password.length < 8 ? 
+        <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''};
+
+    <div className='text-center'>
+        <Button type="submit" 
+        className=' btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
+        disabled={!(formInput.username && formInput.firstname && formInput.lastname && formInput.email)}>
+            Sign Up
+        </Button>
         </div>
-      </Form>
-      )}
 
-            {error && (
-              <div>
-                {error.message}
-              </div>
+        <div className='text-center'>
+        <Button className='btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2 btn'
+        onClick={login}>
+            login instead
+        </Button>
+    </div>
+    </Form>
+
             )}
-      </Container>
+              {submittingForm &&
+                    <div>Submitting the form...</div>}
+            </div>
+        </Container>
     </>
   );
 };

@@ -7,9 +7,8 @@ const Home = () => {
     return (
         <>
         <Container>
-        
-              <h1 style={{"textAlign": "center"}}>Home Page</h1>
-            
+        <h1 className='text-center'>Home</h1>
+        <p>A bare bones template with navigation, user authentication, basic styling and a GraphQL MongoDB database connection aleady set up, just add your own content.</p>
         </Container>
         </>
     );

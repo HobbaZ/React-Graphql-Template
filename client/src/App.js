@@ -1,4 +1,7 @@
 import React from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,14 +9,15 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Profile from './pages/Profile';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
 import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Footer from './components/Footer';
-import AppNavBar from './components/NavBar';
+import About from './pages/About';
+import AppNavbar from './components/NavBar.js';
 
 import './app.css';
 
@@ -42,21 +46,23 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <Router>
-        <div>
-          <AppNavBar/>
-          <div>
+        <div><AppNavbar/></div>
 
-          <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/profile' component={Profile} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/signup' component={Signup} />
+          <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route exact path='/signup' element={<Signup/>} />
+          <Route exact path='/login' element={<Login/>} />
+          <Route exact path='/about' element={<About/>} />
+          <Route exact path='/profile' element={<Profile/>} />
           <Route render={() => <h1>404! This page doesn't exist</h1>} />
-        </Switch>
-        </div>
-          <Footer />
-        </div>
+        </Routes> 
       </Router>
+
+      <div className='heroImage'>
+        <div className='overlay'></div>
+      </div>
+
+      <Footer />
     </ApolloProvider>
   );
 }

@@ -1,6 +1,9 @@
 import React from 'react';
+import Container from 'react-bootstrap/Container';
 
-import { FooterStyle } from '../styles/GenericStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope} from '@fortawesome/free-solid-svg-icons'
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 //Change year automatically
 function year() {
@@ -10,14 +13,18 @@ function year() {
 
 const Footer = () => {
 return (
-  <FooterStyle>
-      <h4>React GRAPHQL Template, {year()} </h4>
-      <div className='icons'>
-          <a href="https://www.linkedin.com/in/zachary-hobba-52aaa182/"><i className="fab fa-linkedin"></i></a>
-          <a href="mailto:zachobba@gmail.com"><i className="fas fa-envelope-square"></i></a>
-          <a href="https://github.com/HobbaZ"><i className="fab fa-github"></i></a>
-      </div>
-  </FooterStyle>
+  <>
+  <Container className='text-white text-center' fluid>
+  <footer className='text-center'>
+      <p>React GRAPQL Template, {year()} 
+
+          <a href="https://www.linkedin.com/in/zachary-hobba-52aaa182/"><FontAwesomeIcon className='icon' icon={faLinkedin} /></a>
+          <a href="mailto:zachobba@gmail.com"><FontAwesomeIcon className='icon' icon={faEnvelope} /></a>
+          <a href="https://github.com/HobbaZ"><FontAwesomeIcon className='icon' icon={faGithub} /></a>
+        </p>
+  </footer>
+  </Container>
+  </>
 );
 };
 
