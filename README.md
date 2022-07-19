@@ -1,36 +1,27 @@
-# README TEMPLATE
+# React GraphQL Template
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
-![License](https://img.shields.io/badge/Made%20with-Markdown-darkgreen.svg)
-[![Github Commits](https://img.shields.io/github/commit-activity/w/HobbaZ/README-template)](https://github.com/HobbaZ/README-template/commits)
-[![GitHub latest commit](https://img.shields.io/github/last-commit/HobbaZ/README-template)](https://github.com/HobbaZ/README-template/branches)
+![License](https://img.shields.io/badge/Made%20with-React-darkgreen.svg)
+[![Github Commits](https://img.shields.io/github/commit-activity/w/HobbaZ/React-Graphql-Template)](https://github.com/HobbaZ/React-Graphql-Template/commits)
+[![GitHub latest commit](https://img.shields.io/github/last-commit/HobbaZ/React-Graphql-Template)](https://github.com/HobbaZ/React-Graphql-Template/branches)
 [![GitHub followers](https://img.shields.io/github/followers/HobbaZ.svg)]()
-![GitHub repo size](https://img.shields.io/github/repo-size/HobbaZ/README-template)
-[![GitHub issues](https://img.shields.io/github/issues/HobbaZ/README-template)](https://img.shields.io/github/issues/HobbaZ/README-template)
-![GitHub forks](https://img.shields.io/github/forks/HobbaZ/README-template)
-![GitHub language count](https://img.shields.io/github/languages/count/HobbaZ/README-template)
-![GitHub search hit counter](https://img.shields.io/github/search/HobbaZ/README-template/hits)
-
-Go to [shields.io](https://img.shields.io) to see what other badges you can add to your projects (to use the ones above, just change to your username and repo)
+![GitHub repo size](https://img.shields.io/github/repo-size/HobbaZ/React-Graphql-Template)
+[![GitHub issues](https://img.shields.io/github/issues/HobbaZ/React-Graphql-Template)](https://img.shields.io/github/issues/HobbaZ/React-Graphql-Template)
+![GitHub forks](https://img.shields.io/github/forks/HobbaZ/React-Graphql-Template)
+![GitHub language count](https://img.shields.io/github/languages/count/HobbaZ/React-Graphql-Template)
 
 ## Description
 ### Project Aim ###
-Ever needed a professional README layout but didn't know where to start? Use this template to quickly develop a professional README. 
-
-
-**Change the sections with your own text.**
-
-
-You can add code blocks and other font stylings to your README via the markdown syntax, look at this [mastering markdown ](https://guides.github.com/features/mastering-markdown/) link for more information.
+To create a simple React app with GraphQL MongoDB database to be used as a template to develop websites quicker.
 
 ### What Problem Does It Solve ###
-Solves the programmer's most gruelling and hated task, documentation.
+Starting a React website from scratch
 
 ### What I Learnt ###
-Put what skills you learnt or advanced upon here.
+How to use GraphQL with React
 
 ## Deployment
-You can view the [website link](https://github.com/HobbaZ/README-template) here. 
+Not deployed yet, will be deployed on Heroku
 
 
 ## Table of Contents
@@ -47,75 +38,68 @@ You can view the [website link](https://github.com/HobbaZ/README-template) here.
 - [Questions](#questions)
 
 ## User Story
-GIVEN a basic application description (e.g. GIVEN a command line application that accepts user input)
-
-WHEN I do something (e.g. WHEN I click a button)
-
-THEN some action happens (e.g. THEN I am redirected to repo owner's Github page)
-
-Repeat WHEN and THEN until all major project needs have been defined
+Create a template for basic setup of a React SPA with a GraphQL backend.
 
 ## Screenshots
-![Cool example image Photo by <a href="https://unsplash.com/@ffstop?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Fotis Fotopoulos</a> on <a href="https://unsplash.com/s/photos/programming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  ](./assets/images/fotis-fotopoulos-DuHKoV44prg-unsplash.jpg)
-  
-![Cool example photo by Photo by <a href="https://unsplash.com/@altumcode?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">AltumCode</a> on <a href="https://unsplash.com/s/photos/programming?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-  ](./assets/images/altumcode-XMFZqrGyV-Q-unsplash.jpg)
+![the home page](./assets/images/home-page.png)
+
+![the login page mobile view](./assets/images/login-page-mobile.png)
+
+![the signup page](./assets/images/signup-page.png)
 
 ## Installation
-You will need: 
-Github, VS Code, Gitbash
+1. Clone the repo to your computer by clicking the green code button and copying the SSH version.
 
-1. Click Use this Template
-2. Enter a name for your repo
-3. Git clone new repo to your computer by right clicking SSH link in your repo, then open gitbash and type:
+2. Open Gitbash in your desired folder and type ```git clone ``` then right click to paste the string and hit enter. The repo will then be cloned to your computer.
 
-    'git clone' 
-    
-    Then right click next to git clone text and your SSh link will be pasted in for you, hit enter and wait as it compiles
+3. Navigate to the repo folder and type ```code .``` into gitbash to open the repo in VS Code.
 
-4. Open the repo in your editor software and edit the README to your values
+4. Open a new Terminal in VS Code and type ```npm install``` to install the repo dependencies.
+
+5. Create a .env file like the image below in the server folder and input your database details.
+
+![example .env file](./assets/images/example-env.PNG)
+
+6. Install concurrently as dev dependency ```npm i concurrently -D``` at root folder
+
+7. Finally, type ```npm run develop``` into the terminal and it will start the dev server at localhost:3000.
 
 ## Features
-- Clickable table of contents
-- Easily modifiable for more sections, more images, etc
-- Badges
+- Can create an account, delete your account and update your details.
+- User Authentication for profile and login routes.
+- Login, signup, home, profile, about and contact pages.
+- Express server already set up and ready to go.
+- MongoDB database ready, change details in .env file to connect yours.
+- Fontawesome icons used where appropriate.
 
 ## Technology
-List tech stack you used to create your project here (e.g. Node.js, Inquirer npm package, Github API)
-- Github
-- 
-- 
+- Express
+- Heroku 
+- GraphQL
+- React
+- JWT
+- MongoDB
+- Styled Components will probably change to Bootstrap
+- Google Fonts
 
 ## Contributors
 [Zachary Hobba](https://github.com/HobbaZ)
 
-You can also contribute by opening a pull request or submitting an issue
+You can also contribute by opening a pull request or submitting an issue.
 
 ## Acknowledgements
-Put url's of website's that helped you in creating your project here.
-E.g.
 
-[Google Fonts Lalezar](https://fonts.google.com/specimen/Lalezar?category=Display#standard-styles)
 
-[Shields.io](https://shields.io/)
-
-[Coolers](https://coolors.co/)
+Important: Code to kill port processes if something running on port 3000 error ```npx kill-port 3000```, type into your VS Code terminal and hit enter, will kill port 3000 and let you run the app.
 
 ## Testing
-List any unit tests you've created for your project here
+No tests yet
 
 ## License
 
-This is the licence conditions you apply to your project (e.g. limitations on how it can be used, if they need to attribute you as the creator). 
-
-**Remember to change the copyright text to the current year and your name!**
-
-View licences available at [choosealicence website](https://choosealicense.com/licenses/)
-
 MIT
 
-**Copyright 2021 Zachary Hobba**
+**Copyright 2022 Zachary Hobba**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
@@ -123,7 +107,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Questions
-Change these to your values
 
 Find me on Github at [HobbaZ](https://github.com/HobbaZ)
+
+If this has helped you with your web development, consider buying me a Coffee (only costs $3) at [zachobba](buymeacoffee.com/zachobbaS)
+
 Email me at [zachobba@gmail.com](zachobba@gmail.com)
