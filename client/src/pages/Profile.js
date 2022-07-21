@@ -113,7 +113,7 @@ function Greeting(props) {
     };
 
     //Update function for form
-    const handleSubmit = async (event) => {
+    const submitForm = async (event) => {
       event.preventDefault();
       setSubmittingForm(true);
 
@@ -164,8 +164,7 @@ function Greeting(props) {
 
             {/*Click to show or hide edit form*/ }
             <div className='text-center'>
-              <Button variant="primary"
-                    className='col-sm-8 col-md-4 col-lg-2 m-2'
+              <Button className=' btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
                     onClick={() => setShowEditForm(!showEditForm)}>
                         Edit Details
               </Button>
@@ -176,7 +175,7 @@ function Greeting(props) {
                 <Container className='fluid'>
             <div>
             <h1 className='text-center'>Update Your Details</h1>
-            <Form onSubmit={handleSubmit} className='mx-auto'>
+            <Form onSubmit={submitForm} className='mx-auto'>
 
                 <Form.Group className="mb-3" disabled={submittingForm}>
                     <Form.Label>Update First Name</Form.Label>
@@ -203,9 +202,8 @@ function Greeting(props) {
             )}
 
                 <div className='text-center'>
-                    <Button variant="primary" 
-                    type="submit" 
-                    className='col-sm-8 col-md-4 col-lg-2 m-2'>
+                    <Button type="submit" 
+                    className=' btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'>
                         Update
                     </Button>
                 </div>
@@ -217,8 +215,7 @@ function Greeting(props) {
               )};
 
             <div className='text-center'>
-              <Button variant="danger"
-                    className='col-sm-8 col-md-4 col-lg-2 m-2'
+              <Button className=' btn btn-danger col-sm-12 col-md-8 col-lg-4 m-2'
                     onClick={deleteAccount}>
                         Delete Account
             </Button>

@@ -77,7 +77,7 @@ function Login() {
                 Success! Logging you in
               </p>
             ) : (
-              <Form validated={validated} onSubmit={handleSubmit}>
+              <Form validated={validated} onSubmit={handleSubmit} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
               <Form.Group disabled={submittingForm}>
                   <Form.Label>Email address</Form.Label>
@@ -102,14 +102,14 @@ function Login() {
 
               <div className='text-center'>
                   <Button type="submit" 
-                  className='btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
+                  className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
                   disabled={!(formInput.email && formInput.password)}>
                       Login
                   </Button>
               </div>
 
               <div className='text-center'>
-              <Button className='btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
+              <Button className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
               onClick={signup}>
                   Sign Up instead
               </Button>

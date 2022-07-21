@@ -53,13 +53,14 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route render={() => <h1>404! This page doesn't exist</h1>} />
         </Routes>
+        </Router>
 
         <div className='heroImage'>
         <div className='overlay'></div>
       </div>
 
           <Footer />
-      </Router>
+      
     </ApolloProvider>
   );
 }

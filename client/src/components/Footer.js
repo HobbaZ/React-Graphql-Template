@@ -14,8 +14,8 @@ function year() {
 const Footer = () => {
 return (
   <>
-  <Container className='text-white text-center' fluid>
-  <footer className='text-center'>
+  <Container className='text-center' fluid>
+  <footer className=' fixed-bottom text-center'>
       <p>React GRAPQL Template, {year()} 
 
           <a href="https://www.linkedin.com/in/zachary-hobba-52aaa182/"><FontAwesomeIcon className='icon' icon={faLinkedin} /></a>
