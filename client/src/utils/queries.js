@@ -4,20 +4,10 @@ export const QUERY_ME = gql`
   query me {
     me {
       _id
+      firstname
+      lastname
       username
       email
-      savedItems{ 
-                  _id
-                  purchasePrice
-                  price
-                  itemName
-                  percent
-                  profit
-                  quantity
-                  itemImages
-                  purchasePrice
-                  quantity
-                }
     }
   }
 `;

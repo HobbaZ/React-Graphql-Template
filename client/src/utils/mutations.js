@@ -14,8 +14,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser($firstname: String!, $lastname: String!, $username: String!, $email: String!, $password: String!) {
+    addUser(firstname: $firstname, lastname: $lastname, username: $username, email: $email, password: $password) {
       token
       user {
         _id
@@ -26,8 +26,8 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_ME = gql`
-mutation updateUser($username: String, $email: String) {
-  updateUser(username: $username, email: $email) {
+mutation updateUser($firstname: String!, $lastname: String!, $username: String, $email: String) {
+  updateUser(firstname: $firstname, lastname: $lastname, username: $username, email: $email) {
     _id
     username
     email
@@ -51,78 +51,6 @@ export const DELETE_ME = gql`
         _id
         username
         email
-        savedItems{ 
-                    purchasePrice
-                    price
-                    itemName
-                    percent
-                    profit
-                    quantity
-                    itemImages
-                    purchasePrice
-                    quantity
-                  }
-    }
-}
-`;
-
-export const SAVE_ITEM = gql`
-mutation saveItem($item: itemInput!) {
-  saveItem(item: $item) {
-      _id
-      username
-      email
-      savedItems{ 
-                  purchasePrice
-                  price
-                  itemName
-                  percent
-                  profit
-                  quantity
-                  itemImages
-                  quantity
-                }
-  }
-}
-`;
-
-export const UPDATE_ITEM = gql`
-mutation updateItem($item: updateItem) {
-  updateItem(item: $item) {
-      _id
-      username
-      email
-      savedItems{ 
-                  purchasePrice
-                  price
-                  itemName
-                  percent
-                  profit
-                  quantity
-                  itemImages
-                  quantity
-                }
-  }
-}
-`;
-
-export const DELETE_ITEM = gql`
-  mutation deleteItem($_id: ID) {
-    deleteItem(_id: $_id) {
-        _id
-        username
-        email
-        savedItems{ 
-                    purchasePrice
-                    price
-                    itemName
-                    percent
-                    profit
-                    quantity
-                    itemImages
-                    purchasePrice
-                    quantity
-                  }
     }
 }
 `;

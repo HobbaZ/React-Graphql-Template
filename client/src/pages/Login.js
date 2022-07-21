@@ -13,7 +13,7 @@ const signup = () => {
 
 let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-const Login = () => {
+function Login() {
 
   const [formInput, setFormInput] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -21,7 +21,7 @@ const Login = () => {
   const [validated] = useState(false);
 
   // update state based on form input changes
-  const handleChange = (event) => {
+  function handleChange (event) {
     const { name, value } = event.target;
 
     setFormInput({

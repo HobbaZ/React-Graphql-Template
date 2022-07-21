@@ -1,17 +1,29 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-// import schema from Item.js
-const itemSchema = require('./Item');
-
 // Schema to create a course model
 const userSchema = new Schema(
-  {    
+  {  
+    firstname: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+    },
+
+    lastname: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+    },
+    
     username: {
         type: String,
         required: true,
         unique: true,
         trim: true,
+        minlength: 2,
       },
 
       email: {
@@ -27,8 +39,6 @@ const userSchema = new Schema(
         required: true,
         minlength: 8,
       },
-
-    savedItems: [itemSchema],
   },
   // set this to use virtual below
   {

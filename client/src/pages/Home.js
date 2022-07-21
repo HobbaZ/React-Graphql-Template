@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {Container} from '../styles/GenericStyles';
+import {Container} from 'react-bootstrap';
 
-const Home = () => {
+function Home() {
 
     return (
         <>

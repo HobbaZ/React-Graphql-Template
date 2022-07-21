@@ -79,8 +79,7 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 - React
 - JWT
 - MongoDB
-- Styled Components will probably change to Bootstrap
-- Google Fonts
+- Bootstrap
 
 ## Contributors
 [Zachary Hobba](https://github.com/HobbaZ)
