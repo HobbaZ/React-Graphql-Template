@@ -41,11 +41,13 @@ Not deployed yet, will be deployed on Heroku
 Create a template for basic setup of a React SPA with a GraphQL backend.
 
 ## Screenshots
-![the home page](./assets/images/home-page.png)
+![the home page](./assets/images/screencapture-localhost-3000-2022-07-22-23_13_05.png)
 
-![the login page mobile view](./assets/images/login-page-mobile.png)
+![the login page mobile view](./assets/images/screencapture-localhost-3000-login-2022-07-22-22_28_27.png)
 
-![the signup page](./assets/images/signup-page.png)
+![the signup page](./assets/images/screencapture-localhost-3000-signup-2022-07-22-23_09_04.png)
+
+![The profile page](./assets/images/screencapture-localhost-3000-profile-2022-07-22-23_18_37.png)
 
 ## Installation
 1. Clone the repo to your computer by clicking the green code button and copying the SSH version.
@@ -87,7 +89,7 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 You can also contribute by opening a pull request or submitting an issue.
 
 ## Acknowledgements
-
+Background photo is by [Geran de Klerk](https://unsplash.com/@gerandeklerk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) [forest](https://unsplash.com/s/photos/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 Important: Code to kill port processes if something running on port 3000 error ```npx kill-port 3000```, type into your VS Code terminal and hit enter, will kill port 3000 and let you run the app.
 

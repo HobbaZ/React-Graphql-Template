@@ -203,7 +203,7 @@ function Greeting(props) {
 
                 <div className='text-center'>
                     <Button type="submit" 
-                    className=' btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'>
+                    className=' btn form-btn col-sm-12 col-md-8 col-lg-4 m-3'>
                         Update
                     </Button>
                 </div>
@@ -212,10 +212,10 @@ function Greeting(props) {
         </div>
     </Container>
                 </>
-              )};
+              )}
 
             <div className='text-center'>
-              <Button className=' btn btn-danger col-sm-12 col-md-8 col-lg-4 m-2'
+              <Button className=' btn btn-danger col-sm-12 col-md-8 col-lg-4 m-3'
                     onClick={deleteAccount}>
                         Delete Account
             </Button>
