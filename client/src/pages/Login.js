@@ -102,14 +102,14 @@ function Login() {
 
               <div className='text-center'>
                   <Button type="submit" 
-                  className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
+                  className='btn form-btn col-sm-12 col-md-8 col-lg-4 my-3'
                   disabled={!(formInput.email && formInput.password)}>
                       Login
                   </Button>
               </div>
 
               <div className='text-center'>
-              <Button className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
+              <Button className='btn form-btn col-sm-12 col-md-8 col-lg-4 mb-2'
               onClick={signup}>
                   Sign Up instead
               </Button>

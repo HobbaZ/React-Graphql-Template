@@ -164,7 +164,7 @@ function Greeting(props) {
 
             {/*Click to show or hide edit form*/ }
             <div className='text-center'>
-              <Button className=' btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
+              <Button className=' btn btn-dark col-sm-12 col-md-8 col-lg-4 mb-2'
                     onClick={() => setShowEditForm(!showEditForm)}>
                         Edit Details
               </Button>
@@ -201,12 +201,12 @@ function Greeting(props) {
               <div className='text-center'>{infoMessage}</div>
             )}
 
-                <div className='text-center'>
+                
                     <Button type="submit" 
-                    className=' btn form-btn col-sm-12 col-md-8 col-lg-4 m-3'>
+                    className=' btn form-btn col-sm-12 col-md-8 col-lg-4 my-2'>
                         Update
                     </Button>
-                </div>
+
             </Form>
 
         </div>
@@ -215,7 +215,7 @@ function Greeting(props) {
               )}
 
             <div className='text-center'>
-              <Button className=' btn btn-danger col-sm-12 col-md-8 col-lg-4 m-3'
+              <Button className=' btn btn-danger col-sm-12 col-md-8 col-lg-4 my-3'
                     onClick={deleteAccount}>
                         Delete Account
             </Button>
