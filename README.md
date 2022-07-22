@@ -47,7 +47,7 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 
 ![the signup page](./assets/images/screencapture-localhost-3000-signup-2022-07-23-00_09_55.png)
 
-![The profile page](./assets/images/screencapture-localhost-3000-profile-2022-07-23-00_07_34.png)
+![The profile page](./assets/images/screencapture-localhost-3000-profile-2022-07-23-00_14_57.png)
 
 ## Installation
 1. Clone the repo to your computer by clicking the green code button and copying the SSH version.
