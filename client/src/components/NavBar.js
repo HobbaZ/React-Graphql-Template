@@ -9,36 +9,36 @@ import { faArrowRightToBracket, faUser, faArrowRightFromBracket, faBars} from '@
 const AppNavbar = () => {
 
   return (
-      <Nav className="navbar navbar-expand-lg">
+      <Nav className="navbar navbar-expand-lg navbar-light">
       <Container fluid>
       <Navbar.Brand as={Link} className="text-white ml-3" to='/'>Logo</Navbar.Brand>
 
         {/*Navbar collapse and expand */}
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-          <span id= "hamburgerIcon"><FontAwesomeIcon icon={faBars} /></span>
-        </button>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarResponsive" aria-controls="navBarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon" id='hamburgerIcon'><FontAwesomeIcon icon={faBars} /></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navBarResponsive">
 
-        <div className="collapse navbar-collapse" id="navbarToggler">
         <Nav className="navbar-nav ml-auto mb-2 mb-lg-0">
 
-          <NavLink as={Link} className="ml-3" to='/' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}>
+          <NavLink as={Link} className="ml-3 my-2" to='/' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}>
             Home</NavLink>
-          <NavLink as={Link} className="ml-3" to='/about' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}>About</NavLink>
+          <NavLink as={Link} className="ml-3 my-2" to='/about' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}>About</NavLink>
 
           {/*Only show if user logged in*/}
           {Auth.loggedIn() ? ( 
             <>
 
-          <NavLink as={Link} className="ml-3" to='/profile' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faUser} /> Profile</NavLink>
+          <NavLink as={Link} className="ml-3 my-2" to='/profile' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faUser} /> Profile</NavLink>
           
-          <Button className='btn btn-dark ml-3' onClick={Auth.logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Button>
+          <Button className='btn btn-dark ml-3 my-2' onClick={Auth.logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Button>
           </>
            ) : (
              <>
              {/*Show if user not logged in*/}
-          <NavLink className="ml-3" as={Link} to='/login' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faArrowRightToBracket} /> Login</NavLink>
+          <NavLink className="ml-3 my-2" as={Link} to='/login' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faArrowRightToBracket} /> Login</NavLink>
 
-          <NavLink className="ml-3" as={Link} to='/signup' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faUser} /> Sign Up</NavLink>
+          <NavLink className="ml-3 my-2" as={Link} to='/signup' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faUser} /> Sign Up</NavLink>
           </>
           )} 
           </Nav>

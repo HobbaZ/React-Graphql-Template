@@ -85,7 +85,7 @@ function Login() {
               </Form.Group>
 
               {!emailRegex.test(formInput.email) ? 
-                  <div className="text-center text-danger">{"Invalid email entered"}</div> : ''};
+                  <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
               
               <Form.Group disabled={submittingForm}>
@@ -94,7 +94,7 @@ function Login() {
               </Form.Group>
 
               {formInput.password.length < 8 ? 
-                  <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''};
+                  <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
 
               {infoMessage && (
             <div className='text-center'>{infoMessage}</div>

@@ -67,39 +67,54 @@ function SignupForm () {
 
     <Form.Group disabled={submittingForm}>
         <Form.Label>First Name</Form.Label>
-        <Form.Control type="text" name ="firstname" value={formInput.firstname} placeholder="First Name" onChange={handleChange} required minLength={2}/>
+        <Form.Control type="text" name ="firstname" value={formInput.firstname || ''} placeholder="First Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
+
+    {formInput.firstname.length < 2 ? 
+                  <div className="text-center text-danger">{"First name must be minimum 2 characters"}</div> : ''}
 
     <Form.Group disabled={submittingForm}>
         <Form.Label>Last Name</Form.Label>
-        <Form.Control type="text"name ="lastname" value={formInput.lastname} placeholder="Last Name" onChange={handleChange} required minLength={2}/>
+        <Form.Control type="text"name ="lastname" value={formInput.lastname || ''} placeholder="Last Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
+
+    {formInput.lastname.length < 2 ? 
+                  <div className="text-center text-danger">{"Last name must be minimum 2 characters"}</div> : ''}
 
     <Form.Group disabled={submittingForm}>
         <Form.Label>Create a username</Form.Label>
-        <Form.Control type="text" name ="username" value={formInput.username} placeholder="username" onChange={handleChange} required minLength={2} formNoValidate={true}/>
+        <Form.Control type="text" name ="username" value={formInput.username || ''} placeholder="username" onChange={handleChange} required minLength={2} formNoValidate={true}/>
     </Form.Group>
+
+    {formInput.username.length < 2 ? 
+                  <div className="text-center text-danger">{"Username must be minimum 2 characters"}</div> : ''}
     
     <Form.Group disabled={submittingForm}>
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name ="email" value={formInput.email} placeholder="Enter email" onChange={handleChange} required minLength={2}/>
+        <Form.Control type="email" name ="email" value={formInput.email || ''} placeholder="Enter email" onChange={handleChange} required minLength={2}/>
     </Form.Group>
+
+    {!emailRegex.test(formInput.email) ? 
+                  <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
     <Form.Group disabled={submittingForm}>
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" value={formInput.password} placeholder="Password" onChange={handleChange} required minLength={8}/>
+        <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={handleChange} required minLength={8}/>
     </Form.Group>
+
+    {formInput.password.length < 8 ? 
+                  <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
 
     <div className='text-center'>
         <Button type="submit" 
-        className=' btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2'
+        className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
         disabled={!(formInput.firstname && formInput.lastname && formInput.username && formInput.email && formInput.password)}>
             Sign Up
         </Button>
         </div>
 
         <div className='text-center'>
-        <Button className='btn btn-dark col-sm-12 col-md-8 col-lg-4 m-2 btn'
+        <Button className='btn form-btn col-sm-12 col-md-8 col-lg-4 m-2'
         onClick={login}>
             login instead
         </Button>
