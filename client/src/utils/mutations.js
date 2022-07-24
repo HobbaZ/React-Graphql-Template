@@ -19,6 +19,9 @@ export const ADD_USER = gql`
       token
       user {
         _id
+        firstname
+        lastname
+        email
         username
       }
     }
@@ -26,10 +29,12 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_ME = gql`
-mutation updateUser($firstname: String!, $lastname: String!, $username: String, $email: String) {
+mutation updateUser($firstname: String!, $lastname: String!, $username: String!, $email: String!) {
   updateUser(firstname: $firstname, lastname: $lastname, username: $username, email: $email) {
     _id
     username
+    firstname
+    lastname
     email
   }
 }
@@ -49,6 +54,9 @@ export const DELETE_ME = gql`
   mutation deleteUser {
     deleteUser {
         _id
+        firstname
+        lastname
+        password
         username
         email
     }

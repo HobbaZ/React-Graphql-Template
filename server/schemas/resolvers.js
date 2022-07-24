@@ -56,7 +56,7 @@ const resolvers = {
               console.error(err)
           })   
         }
-    throw new AuthenticationError('Please login to update an item!');
+    throw new AuthenticationError('Please login to update your account details!');
     },
 
     // Delete user if logged in

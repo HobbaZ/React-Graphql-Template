@@ -37,9 +37,11 @@ function Greeting(props) {
   
   const Profile = () => {
 
-    const [userData, setUserData] = useState({});
+    const { data } = useQuery(QUERY_ME);
 
-    const [formInput, setFormInput] = useState([]);
+    const userData = data?.me || [];
+
+    const [formInput, setFormInput] = useState({ firstname:`${userData.firstname}`, lastname: `${userData.lastname}`, username: `${userData.username}`, email: `${userData.email}`});
     
     const [submittingForm, setSubmittingForm] = useState(false);
 
@@ -47,7 +49,7 @@ function Greeting(props) {
 
     const [validated] = useState(false);
 
-    const { data } = useQuery(QUERY_ME);
+    const [updatedData, setUpdatedData] = useState([])
 
     const [ updateUser ] = useMutation(UPDATE_ME);
 
@@ -55,6 +57,8 @@ function Greeting(props) {
 
     // state for messages
     const [infoMessage, setInfoMessage] = useState('');
+
+    
 
     useEffect(() => {
       const getUserData = async () => {
@@ -67,15 +71,13 @@ function Greeting(props) {
             return false;
           }
   
-          const currentUser = data?.me || [];
-  
-          if (!currentUser) {
+          if (!userData) {
             setInfoMessage('something went wrong getting user data!')
             throw new Error('something went wrong getting user data!');
             
           }
   
-          setUserData(currentUser);
+          setFormInput(userData);
         } catch (err) {
           console.error(err);
         }
@@ -84,18 +86,20 @@ function Greeting(props) {
       getUserData();
     });
 
+    
+
     //Delete account if logged in
-    const deleteAccount = async () => {
+    const deleteAccount = async (_id) => {
     
           const token = Auth.loggedIn() ? Auth.getToken() : null;
 
           try {
-          const { data } = await deleteUser({
+          await deleteUser({
             variables: { ...userData },
           });
 
           // If no data or token, return to login page
-          if (!token || !data) {
+          if (!token || !userData) {
             console.log("Need to be logged in to do this")
             window.location.replace("/login");
             return false;
@@ -113,7 +117,7 @@ function Greeting(props) {
     };
 
     //Update function for form
-    const submitForm = async (event) => {
+    const submitForm = async (event, _id) => {
       event.preventDefault();
       setSubmittingForm(true);
 

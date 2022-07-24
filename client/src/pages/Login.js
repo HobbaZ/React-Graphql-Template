@@ -17,11 +17,10 @@ function Login() {
 
   const [formInput, setFormInput] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  const [submittingForm, setSubmittingForm] = useState(false);
   const [validated] = useState(false);
 
   // update state based on form input changes
-  function handleChange (event) {
+  function inputChange (event) {
     const { name, value } = event.target;
 
     setFormInput({
@@ -33,9 +32,8 @@ function Login() {
   const [infoMessage, setInfoMessage] = useState('');
 
   // submit form
-  const handleSubmit = async (event) => {
+  const submitForm = async (event) => {
     event.preventDefault();
-    setSubmittingForm(true);
 
     if (!formInput) {
       return false;
@@ -53,20 +51,12 @@ function Login() {
         variables: { ...formInput },
       });
 
-      if (!data) {
-        setInfoMessage('Wrong email or password entered')
-        throw new Error('something went wrong trying to log in!');
-      }
-
       setInfoMessage('Logging in!')
-      console.log('logging in', data);
       Auth.login(data.login.token);
     } catch (e) {
-      console.error(e);
+      setInfoMessage("Incorrect password or email address entered!")
+      console.error("Incorrect password or email address entered",e);
     }
-
-    // clear form values
-    setFormInput('');
   };
 
   return (
@@ -77,20 +67,20 @@ function Login() {
                 Success! Logging you in
               </p>
             ) : (
-              <Form validated={validated} onSubmit={handleSubmit} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
+              <Form validated={validated} onSubmit={submitForm} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
-              <Form.Group disabled={submittingForm}>
+              <Form.Group>
                   <Form.Label>Email address</Form.Label>
-                  <Form.Control type="email" name ="email" value={formInput.email.trim() || ''} placeholder="Enter email" onChange={handleChange} required/>
+                  <Form.Control type="email" name ="email" value={formInput.email || ''} placeholder="Enter email" onChange={inputChange} required/>
               </Form.Group>
 
               {!emailRegex.test(formInput.email) ? 
                   <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
               
-              <Form.Group disabled={submittingForm}>
+              <Form.Group>
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={handleChange} required/>
+                  <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={inputChange} required/>
               </Form.Group>
 
               {formInput.password.length < 8 ? 
