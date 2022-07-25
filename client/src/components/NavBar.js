@@ -15,7 +15,7 @@ const AppNavbar = () => {
 
         {/*Navbar collapse and expand */}
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarResponsive" aria-controls="navBarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon" id='hamburgerIcon'><FontAwesomeIcon icon={faBars} /></span>
+      <span id='hamburgerIcon'><FontAwesomeIcon icon={faBars} /></span>
     </button>
     <div className="collapse navbar-collapse" id="navBarResponsive">
 

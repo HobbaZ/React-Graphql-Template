@@ -47,10 +47,6 @@ function Greeting(props) {
 
     const [showEditForm, setShowEditForm] = useState(false);
 
-    const [validated] = useState(false);
-
-    const [updatedData, setUpdatedData] = useState([])
-
     const [ updateUser ] = useMutation(UPDATE_ME);
 
     const [ deleteUser ] = useMutation(DELETE_ME);
@@ -58,8 +54,8 @@ function Greeting(props) {
     // state for messages
     const [infoMessage, setInfoMessage] = useState('');
 
-    
-
+  
+    //Get user data when component loads
     useEffect(() => {
       const getUserData = async () => {
         try {
@@ -77,7 +73,7 @@ function Greeting(props) {
             
           }
   
-          setFormInput(userData);
+          setFormInput(formInput);
         } catch (err) {
           console.error(err);
         }
@@ -99,7 +95,7 @@ function Greeting(props) {
           });
 
           // If no data or token, return to login page
-          if (!token || !userData) {
+          if (!token) {
             console.log("Need to be logged in to do this")
             window.location.replace("/login");
             return false;
@@ -116,21 +112,33 @@ function Greeting(props) {
       }
     };
 
+    const handleChange = async (event) => {
+      const { name, value } = event.target;
+      setFormInput({ ...formInput, [name]: value });
+    };
+
+
     //Update function for form
     const submitForm = async (event, _id) => {
       event.preventDefault();
       setSubmittingForm(true);
 
+      const form = event.currentTarget;
+      if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
       //Send data to update user endpoint
           const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-          if (!token || !formInput) {
+          if (!token) {
             console.log("Need to be logged in to do this")
             window.location.replace("/login");
             return false;
           }
 
-          //Send data to login endpoint
+          //Send data to update endpoint
           try {
             const { data } = await updateUser({
               variables: { ...formInput },
@@ -144,11 +152,6 @@ function Greeting(props) {
       } catch (err) {
         console.error(err);
       }
-    };
-
-    const handleChange = async (event) => {
-      const { name, value } = event.target;
-      setFormInput({ ...formInput, [name]: value });
     };
 
     const welcome = <Greeting lastname={userData.lastname} firstname={userData.firstname} username={userData.username} email={userData.email}/>
@@ -205,11 +208,12 @@ function Greeting(props) {
               <div className='text-center'>{infoMessage}</div>
             )}
 
-                
+            <div className='text-center'>
                     <Button type="submit" 
                     className=' btn form-btn col-sm-12 col-md-8 col-lg-4 my-2'>
                         Update
                     </Button>
+            </div>
 
             </Form>
 
