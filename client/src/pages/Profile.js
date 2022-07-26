@@ -35,13 +35,13 @@ function Greeting(props) {
     )
   }
   
-  const Profile = () => {
+  const Profile = (props) => {
 
     const { data } = useQuery(QUERY_ME);
 
     const userData = data?.me || [];
 
-    const [formInput, setFormInput] = useState({ firstname:`${userData.firstname}`, lastname: `${userData.lastname}`, username: `${userData.username}`, email: `${userData.email}`});
+    const [formInput, setFormInput] = useState({firstname: `${userData.firstname}`, lastname: `${userData.lastname}`, username: `${userData.username}`, email: `${userData.email}`});
     
     const [submittingForm, setSubmittingForm] = useState(false);
 
@@ -68,19 +68,20 @@ function Greeting(props) {
           }
   
           if (!userData) {
-            setInfoMessage('something went wrong getting user data!')
-            throw new Error('something went wrong getting user data!');
+            setInfoMessage('Error getting user data!')
+            throw new Error('Error getting user data!');
             
           }
   
-          setFormInput(formInput);
         } catch (err) {
           console.error(err);
         }
       };
   
+      setFormInput(userData)
+
       getUserData();
-    });
+    }, [userData]);
 
     
 
@@ -140,6 +141,7 @@ function Greeting(props) {
 
           //Send data to update endpoint
           try {
+            setFormInput(formInput)
             const { data } = await updateUser({
               variables: { ...formInput },
             });
