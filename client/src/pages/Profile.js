@@ -37,8 +37,9 @@ function Greeting(props) {
   
   const Profile = (props) => {
 
-    const { data } = useQuery(QUERY_ME);
+    const { data, loading, error } = useQuery(QUERY_ME);
 
+    //set user data to the requested data
     const userData = data?.me || [];
 
     const [formInput, setFormInput] = useState({firstname: `${userData.firstname}`, lastname: `${userData.lastname}`, username: `${userData.username}`, email: `${userData.email}`});
@@ -62,7 +63,7 @@ function Greeting(props) {
           const token = Auth.loggedIn() ? Auth.getToken() : null;
   
           if (!token) {
-            console.log("Need to be logged in to do this")
+            setInfoMessage("Need to be logged in to do this")
             window.location.replace("/login");
             return false;
           }
@@ -134,7 +135,7 @@ function Greeting(props) {
           const token = Auth.loggedIn() ? Auth.getToken() : null;
 
           if (!token) {
-            console.log("Need to be logged in to do this")
+            setInfoMessage("Need to be logged in to do this")
             window.location.replace("/login");
             return false;
           }
@@ -156,8 +157,10 @@ function Greeting(props) {
       }
     };
 
+    //Welcome sub component
     const welcome = <Greeting lastname={userData.lastname} firstname={userData.firstname} username={userData.username} email={userData.email}/>
 
+    //HTML view
     return (
     <Container>
         <>
@@ -167,9 +170,9 @@ function Greeting(props) {
       
               <div>{welcome}</div>
 
-              {infoMessage && (
-                  <div className='text-center'>{infoMessage}</div>
-                )}
+        {loading && (
+          <p>Loading Content...</p>
+        )}
 
             {/*Click to show or hide edit form*/ }
             <div className='text-center'>
@@ -207,7 +210,7 @@ function Greeting(props) {
                 </Form.Group>
 
                 {infoMessage && (
-              <div className='text-center'>{infoMessage}</div>
+              <div className='text-center text-dark'>{infoMessage}</div>
             )}
 
             <div className='text-center'>
@@ -216,10 +219,9 @@ function Greeting(props) {
                         Update
                     </Button>
             </div>
-
             </Form>
-
         </div>
+
     </Container>
                 </>
               )}
@@ -232,6 +234,10 @@ function Greeting(props) {
               </div>
             </>
         )}
+
+          {error && (
+                setInfoMessage(error.message)
+            )}
         </>
         </Container>
         );

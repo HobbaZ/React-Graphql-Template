@@ -20,10 +20,12 @@ function SignupForm () {
   const [formInput, setFormInput] = useState({firstname: '', lastname: '', username: '', email: '', password: ''});
   // set state for form validation
   const [validated] = useState(false);
-  const [submittingForm, setSubmittingForm] = useState(false);
 
   // set mutation at submit event
-  const [addUser, { data } ] = useMutation(ADD_USER);
+  const [addUser, { data, loading, error } ] = useMutation(ADD_USER);
+
+  // state for messages
+  const [infoMessage, setInfoMessage] = useState('');
 
   // sets and resets the data variable to whatever you are typing in the textbox
   const handleChange = (event) => {
@@ -34,7 +36,6 @@ function SignupForm () {
   //Submits the data from the form to the endpoint
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmittingForm(true);
 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -48,24 +49,29 @@ function SignupForm () {
         variables: { ...formInput },
       });
 
+      setInfoMessage('Creating your account!')
       Auth.login(data.addUser.token);
       setFormInput('');
     } catch (e) {
-      console.error(e);
+            
+      setInfoMessage(e.message)
+      console.error("Error creating your account: ",e.message);
     }
   };
 
   return (
     <Container>
       <h1 className='text-center'>Sign Up</h1>
-      {data ? (
+      
+        {data ? (
               <p>
-                Success! Creating your account...
+                Success! Creating your account
               </p>
             ) : (
+
       <Form validated={validated} onSubmit={handleSubmit} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
-    <Form.Group disabled={submittingForm}>
+    <Form.Group>
         <Form.Label>First Name</Form.Label>
         <Form.Control type="text" name ="firstname" value={formInput.firstname || ''} placeholder="First Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
@@ -73,7 +79,7 @@ function SignupForm () {
     {formInput.firstname.length < 2 ? 
                   <div className="text-center text-danger">{"First name must be minimum 2 characters"}</div> : ''}
 
-    <Form.Group disabled={submittingForm}>
+    <Form.Group>
         <Form.Label>Last Name</Form.Label>
         <Form.Control type="text"name ="lastname" value={formInput.lastname || ''} placeholder="Last Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
@@ -81,7 +87,7 @@ function SignupForm () {
     {formInput.lastname.length < 2 ? 
                   <div className="text-center text-danger">{"Last name must be minimum 2 characters"}</div> : ''}
 
-    <Form.Group disabled={submittingForm}>
+    <Form.Group>
         <Form.Label>Create a username</Form.Label>
         <Form.Control type="text" name ="username" value={formInput.username || ''} placeholder="username" onChange={handleChange} required minLength={2} formNoValidate={true}/>
     </Form.Group>
@@ -89,7 +95,7 @@ function SignupForm () {
     {formInput.username.length < 2 ? 
                   <div className="text-center text-danger">{"Username must be minimum 2 characters"}</div> : ''}
     
-    <Form.Group disabled={submittingForm}>
+    <Form.Group>
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" name ="email" value={formInput.email || ''} placeholder="Enter email" onChange={handleChange} required minLength={2}/>
     </Form.Group>
@@ -97,13 +103,17 @@ function SignupForm () {
     {!emailRegex.test(formInput.email) ? 
                   <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
-    <Form.Group disabled={submittingForm}>
+    <Form.Group>
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={handleChange} required minLength={8}/>
     </Form.Group>
 
     {formInput.password.length < 8 ? 
                   <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
+
+    {infoMessage && (
+            <div className='text-center'>{infoMessage}</div>
+            )}
 
     <div className='text-center'>
         <Button type="submit" 
@@ -120,10 +130,13 @@ function SignupForm () {
         </Button>
     </div>
     </Form>
-    )}
-        {submittingForm && (
-              <div>Submitting the form...</div>
         )}
+
+            {error && (
+              <div>
+                {error.message}
+              </div>
+            )}
     </Container>
   );
 };

@@ -48,13 +48,39 @@ const userSchema = new Schema(
   }
 );
 
-  
+// Check for duplicate username or email in signup, show relevant errors depending if username or email already in db
+userSchema.post('save', function(error, doc, next) {
+  if (error.name === 'MongoError' && error.code === 11000) {
+    if (error.keyValue.username) {
+    next(new Error(`The username ${error.keyValue.username} is already in use`));
+    } else {
+      next(new Error(`The email ${error.keyValue.email} is already in use`));
+    }
+  } else {
+    next();
+  }
+});
+
+// Check for duplicate username or email in update, show relevant errors depending if username or email already in db
+userSchema.post('update', function(error, res, next) {
+  if (error.name === 'MongoError' && error.code === 11000) {
+    if (error.keyValue.username) {
+      next(new Error(`The username ${error.keyValue.username} is already in use`));
+      } else {
+        next(new Error(`The email ${error.keyValue.email} is already in use`));
+      }
+  } else {
+    next();
+  }
+});
+
 // hash user password
 userSchema.pre('save', async function (next) {
+
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
-  }
+  };
 
   next();
 });

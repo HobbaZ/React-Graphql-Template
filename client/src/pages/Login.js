@@ -16,7 +16,7 @@ let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0
 function Login() {
 
   const [formInput, setFormInput] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data, loading }] = useMutation(LOGIN_USER);
   const [validated] = useState(false);
 
   // update state based on form input changes

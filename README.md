@@ -21,7 +21,7 @@ Starting a React website from scratch
 How to use GraphQL with React
 
 ## Deployment
-Not deployed yet, will be deployed on Heroku
+Deployed on Heroku [here](https://react-graphql-template.herokuapp.com/)
 
 
 ## Table of Contents
@@ -89,6 +89,10 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 You can also contribute by opening a pull request or submitting an issue.
 
 ## Acknowledgements
+[Custome mongoDB error messages from Stack overflow](https://stackoverflow.com/questions/61324293/mongoose-e11000-duplicate-key-change-the-type-of-return-message-in-case-of-erro)
+
+[MongoDB error handling middleware](https://mongoosejs.com/docs/middleware.html#error-handling-middleware)
+
 Background photo is by [Geran de Klerk](https://unsplash.com/@gerandeklerk?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) [forest](https://unsplash.com/s/photos/forest?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
 Important: Code to kill port processes if something running on port 3000 error ```npx kill-port 3000```, type into your VS Code terminal and hit enter, will kill port 3000 and let you run the app.

@@ -5,10 +5,6 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
   Query: {
 
-    user: async (parent, { username }) => {
-      return User.findOne({ username });
-    },
-
     me: async (_, args, context) => {
       if (context.user) {
         return User.findOne({ _id: context.user._id });
@@ -18,8 +14,18 @@ const resolvers = {
   },
 
   Mutation: {
+    //signup
     addUser: async (parent, { firstname, lastname, username, email, password }) => {
       const user = await User.create({ firstname, lastname, username, email, password });
+
+      if (!user) {
+        throw new AuthenticationError('Error creating account');
+      }
+
+      if (error[0].code === "11000") {
+        throw new AuthenticationError('An account with the username or email already already exists');
+      }
+
       const token = signToken(user);
       return { token, user };
     },
