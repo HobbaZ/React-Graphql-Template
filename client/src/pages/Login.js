@@ -16,7 +16,7 @@ let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0
 function Login() {
 
   const [formInput, setFormInput] = useState({ email: '', password: '' });
-  const [login, { error, data, loading }] = useMutation(LOGIN_USER);
+  const [login, { data }] = useMutation(LOGIN_USER);
   const [validated] = useState(false);
 
   // update state based on form input changes
@@ -63,7 +63,7 @@ function Login() {
     <Container>
           <h1 className='text-center'>Login</h1>
             {data ? (
-              <p>
+              <p className='text-cennter'>
                 Success! Logging you in
               </p>
             ) : (
@@ -107,11 +107,6 @@ function Login() {
               </Form>
             )}
 
-            {error && (
-              <div>
-                {error.message}
-              </div>
-            )}
     </Container>
   );
 };

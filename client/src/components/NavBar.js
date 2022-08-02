@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Navbar, Nav, Container, Button} from 'react-bootstrap';
+import { Navbar, Nav, Container, Button, Form} from 'react-bootstrap';
 import Auth from '../utils/auth';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -31,7 +31,7 @@ const AppNavbar = () => {
 
           <NavLink as={Link} className="ml-3 my-2" to='/profile' style={({ isActive }) => ({ color: isActive ? 'yellow' : 'white',})}><FontAwesomeIcon icon={faUser} /> Profile</NavLink>
           
-          <Button className='btn btn-dark ml-3 my-2' onClick={Auth.logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Button>
+          <Button className='btn btn-dark ml-3 col-3 col-sm-2 col-lg-auto' onClick={Auth.logout}><FontAwesomeIcon icon={faArrowRightFromBracket} /> Logout</Button>
           </>
            ) : (
              <>

@@ -22,10 +22,6 @@ const resolvers = {
         throw new AuthenticationError('Error creating account');
       }
 
-      if (error[0].code === "11000") {
-        throw new AuthenticationError('An account with the username or email already already exists');
-      }
-
       const token = signToken(user);
       return { token, user };
     },

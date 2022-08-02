@@ -37,7 +37,7 @@ function Greeting(props) {
   
   const Profile = (props) => {
 
-    const { data, loading, error } = useQuery(QUERY_ME);
+    const { data, loading } = useQuery(QUERY_ME);
 
     //set user data to the requested data
     const userData = data?.me || [];
@@ -234,10 +234,6 @@ function Greeting(props) {
               </div>
             </>
         )}
-
-          {error && (
-                setInfoMessage(error.message)
-            )}
         </>
         </Container>
         );

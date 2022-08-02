@@ -22,7 +22,7 @@ function SignupForm () {
   const [validated] = useState(false);
 
   // set mutation at submit event
-  const [addUser, { data, loading, error } ] = useMutation(ADD_USER);
+  const [addUser, { data } ] = useMutation(ADD_USER);
 
   // state for messages
   const [infoMessage, setInfoMessage] = useState('');
@@ -55,7 +55,7 @@ function SignupForm () {
     } catch (e) {
             
       setInfoMessage(e.message)
-      console.error("Error creating your account: ",e.message);
+      console.log("Error creating your account: ",e.message);
     }
   };
 
@@ -64,7 +64,7 @@ function SignupForm () {
       <h1 className='text-center'>Sign Up</h1>
       
         {data ? (
-              <p>
+              <p className='text-center'>
                 Success! Creating your account
               </p>
             ) : (
@@ -132,11 +132,6 @@ function SignupForm () {
     </Form>
         )}
 
-            {error && (
-              <div>
-                {error.message}
-              </div>
-            )}
     </Container>
   );
 };
