@@ -16,7 +16,7 @@ return (
   <>
   <Container className='text-center' fluid>
   <footer className=' fixed-bottom text-center'>
-      <p>React GRAPQL Template, {year()} 
+      <p>React GraphQL Template, {year()} 
 
           <a href="https://www.linkedin.com/in/zachary-hobba-52aaa182/"><FontAwesomeIcon className='icon' icon={faLinkedin} /></a>
           <a href="mailto:zachobba@gmail.com"><FontAwesomeIcon className='icon' icon={faEnvelope} /></a>
