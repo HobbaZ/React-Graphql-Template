@@ -115,6 +115,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Find me on Github at [HobbaZ](https://github.com/HobbaZ)
 
-If this has helped you with your web development, consider buying me a Coffee (only costs $3) at [zachobba](buymeacoffee.com/zachobbaS)
+If this has helped you with your web development, consider buying me a Coffee (only costs $3) at [zachobba](https://buymeacoffee.com/zachobbaS)
 
 Email me at [zachobba@gmail.com](zachobba@gmail.com)
