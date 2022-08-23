@@ -60,7 +60,7 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 
 5. Create a .env file like the image below in the server folder and input your database details.
 
-![example .env file](./assets/images/example-env.PNG)
+![example .env file](./client/src/images/envExample.PNG)
 
 6. Install concurrently as dev dependency ```npm i concurrently -D``` at root folder
 
