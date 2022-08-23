@@ -41,13 +41,13 @@ Deployed on Heroku [here](https://react-graphql-template.herokuapp.com/)
 Create a template for basic setup of a React SPA with a GraphQL backend.
 
 ## Screenshots
-![the home page](./assets/images/screencapture-localhost-3000-2022-07-23-00_08_40.png)
+![the home page](./assets/images/screencapture-react-graphql-template-herokuapp-2022-08-23-10_17_54.png)
 
-![the login page mobile view](./assets/images/screencapture-localhost-3000-login-2022-07-23-00_09_37.png)
+![the login page](./assets/images/screencapture-react-graphql-template-herokuapp-login-2022-08-23-10_25_18.png)
 
-![the signup page](./assets/images/screencapture-localhost-3000-signup-2022-07-23-00_09_55.png)
+![the signup page](./assets/images/screencapture-react-graphql-template-herokuapp-signup-2022-08-23-10_26_24.png)
 
-![The profile page](./assets/images/screencapture-localhost-3000-profile-2022-07-23-00_14_57.png)
+![The profile page](./assets/images/screencapture-react-graphql-template-herokuapp-profile-2022-08-23-10_07_54.png)
 
 ## Installation
 1. Clone the repo to your computer by clicking the green code button and copying the SSH version.
