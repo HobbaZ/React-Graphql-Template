@@ -7,6 +7,10 @@
   .App {
     text-align: center;
   }
+
+  h1 {
+    color: var(--light);
+  }
   
   html, body {
     height: 100%;
@@ -48,7 +52,7 @@
   }
   
   .navbar {
-    border-bottom: 2px var(--light) solid;
+    
     font-size: large;
     color: var(--dark);
     font-weight: 500;
@@ -63,33 +67,43 @@
   }
   
   form {
-    background-color: var(--light);
+    background-color: var(--transparent);
     color: var(--dark);
     border-radius: 5px;
+    backdrop-filter:blur(20px);
+    border: 1px rgba(255, 255, 255, 0.404) solid;
     height: 100%;
     padding: 10px;
   }
 
+  .btn-danger {
+    background-color: var(--transparent);
+    border: red solid 2px;
+    color: red;
+    font-weight: 600;
+  }
+
   .btn-dark {
     border: 2px solid var(--light);
+    color: var(--light);
     background-color: var(--transparent);
   }
 
   .btn-dark:hover {
-    background-color: rgba(255, 255, 255, 0.171);
-    border: 2px solid var(--transparent);
+    background-color: var(--transparent);
+    border: 2px solid rgba(255, 255, 255, 0.164);
   }
 
   .form-btn {
     border: 2px solid grey;
-    color: var(--dark);
+    color: var(--light);
     background-color: var(--transparent);
   }
 
   .form-btn:hover {
-    border: 2px solid var(--transparent);
+    border: 2px solid rgba(255, 255, 255, 0.164);
     background-color: var(--transparent);
-    color: var(--dark);
+    color: var(--light);
   }
   
   #hamburgerIcon {
@@ -104,8 +118,7 @@
 
   footer {
     margin-top: 20px;
-    background-color: rgb(0, 0, 0);
-    border-top: 2px var(--light) solid;
+    background-color: var(--transparent);
     align-items: center;
     width: 100vw;
     padding-top: 10px;

@@ -61,7 +61,7 @@ function Login() {
 
   return (
     <Container>
-          <h1 className='text-center'>Login</h1>
+          
             {data ? (
               <p className='text-cennter'>
                 Success! Logging you in
@@ -69,12 +69,14 @@ function Login() {
             ) : (
               <Form validated={validated} onSubmit={submitForm} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
+              <h1 className='text-center'>Login</h1>
+
               <Form.Group>
                   <Form.Label>Email address</Form.Label>
                   <Form.Control type="email" name ="email" value={formInput.email || ''} placeholder="Enter email" onChange={inputChange} required/>
               </Form.Group>
 
-              {!emailRegex.test(formInput.email) ? 
+              {formInput.email!== '' && !emailRegex.test(formInput.email) ? 
                   <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
               
@@ -83,7 +85,7 @@ function Login() {
                   <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={inputChange} required/>
               </Form.Group>
 
-              {formInput.password.length < 8 ? 
+              {formInput.password!== '' && formInput.password.length < 8 ? 
                   <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
 
               {infoMessage && (

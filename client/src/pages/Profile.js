@@ -55,6 +55,8 @@ function Greeting(props) {
     // state for messages
     const [infoMessage, setInfoMessage] = useState('');
 
+    let emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
   
     //Get user data when component loads
     useEffect(() => {
@@ -184,28 +186,42 @@ function Greeting(props) {
                 <>
                 <Container className='fluid'>
             <div>
-            <h1 className='text-center'>Update Your Details</h1>
+            
             <Form onSubmit={submitForm} className='mx-auto'>
+
+            <h1 className='text-center'>Update Your Details</h1>
 
                 <Form.Group className="mb-3" disabled={submittingForm}>
                     <Form.Label>Update First Name</Form.Label>
                     <Form.Control type="text" name ="firstname" value={formInput.firstname || userData.firstname} placeholder={userData.firstname} onChange={handleChange} minLength={2}/>
                 </Form.Group>
 
+                {formInput.firstname!== '' && formInput.firstname.length < 2 ? 
+                  <div className="text-center text-danger">{"First name must be minimum 2 characters"}</div> : ''}
+
                 <Form.Group className="mb-3" disabled={submittingForm}>
                     <Form.Label>Update Last Name</Form.Label>
                     <Form.Control type="text"name ="lastname" value={formInput.lastname || userData.lastname} placeholder={userData.lastname} onChange={handleChange} minLength={2}/>
                 </Form.Group>
+
+                {formInput.lastname!== '' && formInput.lastname.length < 2 ? 
+                  <div className="text-center text-danger">{"Last name must be minimum 2 characters"}</div> : ''}
                 
                 <Form.Group className="mb-3" disabled={submittingForm}>
                     <Form.Label>Update Username</Form.Label>
                     <Form.Control type="text" name ="username" value={formInput.username || userData.username} placeholder={userData.username} onChange={handleChange} minLength={2}/>
                 </Form.Group>
 
+                {formInput.username!== '' && formInput.username.length < 2 ? 
+                  <div className="text-center text-danger">{"Username must be minimum 2 characters"}</div> : ''}
+
                 <Form.Group className="mb-3" disabled={submittingForm}>
                     <Form.Label>Update Email address</Form.Label>
                     <Form.Control type="email" name ="email" value={formInput.email || userData.email} placeholder={userData.email} onChange={handleChange} minLength={2}/>
                 </Form.Group>
+
+                {formInput.email!== '' && !emailRegex.test(formInput.email) ? 
+                  <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
                 {infoMessage && (
               <div className='text-center text-dark'>{infoMessage}</div>

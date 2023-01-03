@@ -61,7 +61,7 @@ function SignupForm () {
 
   return (
     <Container>
-      <h1 className='text-center'>Sign Up</h1>
+      
       
         {data ? (
               <p className='text-center'>
@@ -71,12 +71,14 @@ function SignupForm () {
 
       <Form validated={validated} onSubmit={handleSubmit} className='mx-auto col-sm-12 col-md-9 col-lg-6'>
 
+      <h1 className='text-center'>Sign Up</h1>
+
     <Form.Group>
         <Form.Label>First Name</Form.Label>
         <Form.Control type="text" name ="firstname" value={formInput.firstname || ''} placeholder="First Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
 
-    {formInput.firstname.length < 2 ? 
+    {formInput.firstname!== '' && formInput.firstname.length < 2 ? 
                   <div className="text-center text-danger">{"First name must be minimum 2 characters"}</div> : ''}
 
     <Form.Group>
@@ -84,7 +86,7 @@ function SignupForm () {
         <Form.Control type="text"name ="lastname" value={formInput.lastname || ''} placeholder="Last Name" onChange={handleChange} required minLength={2}/>
     </Form.Group>
 
-    {formInput.lastname.length < 2 ? 
+    {formInput.lastname!== '' && formInput.lastname.length < 2 ? 
                   <div className="text-center text-danger">{"Last name must be minimum 2 characters"}</div> : ''}
 
     <Form.Group>
@@ -92,7 +94,7 @@ function SignupForm () {
         <Form.Control type="text" name ="username" value={formInput.username || ''} placeholder="username" onChange={handleChange} required minLength={2} formNoValidate={true}/>
     </Form.Group>
 
-    {formInput.username.length < 2 ? 
+    {formInput.username!== '' && formInput.username.length < 2 ? 
                   <div className="text-center text-danger">{"Username must be minimum 2 characters"}</div> : ''}
     
     <Form.Group>
@@ -100,7 +102,7 @@ function SignupForm () {
         <Form.Control type="email" name ="email" value={formInput.email || ''} placeholder="Enter email" onChange={handleChange} required minLength={2}/>
     </Form.Group>
 
-    {!emailRegex.test(formInput.email) ? 
+    {formInput.email!== '' && !emailRegex.test(formInput.email) ? 
                   <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
     <Form.Group>
@@ -108,7 +110,7 @@ function SignupForm () {
         <Form.Control type="password" name="password" value={formInput.password || ''} placeholder="Password" onChange={handleChange} required minLength={8}/>
     </Form.Group>
 
-    {formInput.password.length < 8 ? 
+    {formInput.password!== '' && formInput.password.length < 8 ? 
                   <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
 
     {infoMessage && (
