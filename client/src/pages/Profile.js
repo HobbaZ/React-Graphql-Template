@@ -71,7 +71,6 @@ function Greeting(props) {
           if (!userData) {
             setInfoMessage('Error getting user data!')
             throw new Error('Error getting user data!');
-            
           }
   
         } catch (err) {
@@ -80,7 +79,6 @@ function Greeting(props) {
       };
   
       setFormInput(userData)
-
       getUserData();
     }, [userData]);
 

@@ -56,7 +56,7 @@ export const DELETE_ME = gql`
         _id
         firstname
         lastname
-        password
+        
         username
         email
     }

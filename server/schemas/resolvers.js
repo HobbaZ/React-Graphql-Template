@@ -25,6 +25,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -64,7 +65,7 @@ const resolvers = {
     // Delete user if logged in
     deleteUser: async (_, args, context) => {
       if (context.user) {
-        return User.findOneAndDelete({ _id: context.user._id });
+        return User.findByIdAndDelete({ _id: context.user._id });
       }
       throw new AuthenticationError('You need to be logged in!');
     },
