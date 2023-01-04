@@ -224,7 +224,7 @@ function Greeting(props) {
                   <div className="text-center text-danger">{"Invalid email entered"}</div> : ''}
 
                 {infoMessage && (
-              <div className='text-center text-dark'>{infoMessage}</div>
+              <div className='text-center text-danger'>{infoMessage}</div>
             )}
 
             <div className='text-center'>

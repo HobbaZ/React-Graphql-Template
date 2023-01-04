@@ -9,6 +9,7 @@ import { faArrowRightToBracket, faUser, faArrowRightFromBracket, faBars} from '@
 const AppNavbar = () => {
 
   return (
+<>
       <Nav className="navbar navbar-expand-lg navbar-light">
       <Container fluid>
       <Navbar.Brand as={Link} className="text-white ml-3" to='/'>Logo</Navbar.Brand>
@@ -45,6 +46,7 @@ const AppNavbar = () => {
           </div> 
            </Container>
       </Nav>
+      </>
   );
 };
 

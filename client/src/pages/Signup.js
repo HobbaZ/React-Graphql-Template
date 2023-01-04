@@ -114,7 +114,7 @@ function SignupForm () {
                   <div className="text-center text-danger">{"Password must be minimum 8 characters"}</div> : ''}
 
     {infoMessage && (
-            <div className='text-center'>{infoMessage}</div>
+            <div className='text-center text-danger'>{infoMessage}</div>
             )}
 
     <div className='text-center'>
