@@ -164,6 +164,14 @@
   .App-link {
     color: #61dafb;
   }
+
+  label {
+    color: var(--light);
+  }
+
+  .text-danger {
+    color: var(--light);
+  }
   
   @keyframes App-logo-spin {
     from {
