@@ -50,7 +50,7 @@ Create a template for basic setup of a React SPA with a GraphQL backend.
 ![The profile page](./assets/images/screencapture-react-graphql-template-herokuapp-profile-2022-08-23-10_07_54.png)
 
 ## Installation
-Need to install MongoDB local server before trying to run this projects, check the MongoDB documentation: [https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
+Need to install MongoDB local server before trying to run this project, check the MongoDB documentation: [https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/)
 
 1. Clone the repo to your computer by clicking the green code button and copying the SSH version.
 
@@ -67,8 +67,6 @@ Need to install MongoDB local server before trying to run this projects, check t
 6. Install concurrently as dev dependency ```npm i concurrently -D``` at root folder
 
 7. Finally, type ```npm run develop``` into the terminal and it will start the dev server at localhost:3000.
-
-
 
 ## Features
 - Can create an account, delete your account and update your details.
