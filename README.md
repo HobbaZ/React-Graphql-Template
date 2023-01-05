@@ -80,7 +80,7 @@ Need to install MongoDB local server before trying to run this projects, check t
 
 ## Technology
 - Express
-- Vercel 
+- Heroku 
 - GraphQL
 - React
 - JWT
