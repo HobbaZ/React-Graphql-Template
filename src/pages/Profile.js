@@ -4,6 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { UPDATE_ME, DELETE_ME } from "../utils/mutations";
 import { QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
+import { ThreeJSBackground } from "../components/ThreeJSBackground";
 
 function Greeting(props) {
   const date = new Date();
@@ -124,9 +125,10 @@ const Profile = () => {
 
   return (
     <Container className="profileContainer">
-      {Auth.loggedIn() && (
+      {Auth.loggedIn() ? (
         <>
           <h2 className="text-center">Your Profile</h2>
+          <hr />
 
           <div>
             <Greeting
@@ -314,6 +316,8 @@ const Profile = () => {
             </div>
           </div>
         </>
+      ) : (
+        window.location.replace("/login")
       )}
     </Container>
   );

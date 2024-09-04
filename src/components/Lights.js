@@ -8,7 +8,7 @@ const Lights = () => {
       <pointLight
         position={[0, 0, 0]}
         castShadow={true}
-        intensity={3 / 100} // Divide by 100 to control brightness
+        intensity={100 / 100} // Divide by 100 to control brightness
         color={"white"}
       />
     </>
